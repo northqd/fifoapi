@@ -1,0 +1,151 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "win-x86-staticlib-debug-compiler",
+            "problemMatcher": ["$msCompile"],
+            "command": "cl.exe",
+            "args": [
+                "/MTd", "/D", "_DEBUG",
+                "/Fo:", "${workspaceFolder}\\build\\fifo-win.obj",
+                "/c", "${workspaceFolder}\\src\\fifo-win.c"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "win-x86-staticlib-rels-compiler",
+            "problemMatcher": ["$msCompile"],
+            "command": "cl.exe",
+            "args": [
+                "/MT", "/D", "NDEBUG",
+                "/Fo:", "${workspaceFolder}\\build\\fifo-win.obj",
+                "/c", "${workspaceFolder}\\src\\fifo-win.c"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "win-x86-staticlib-debug-mklib",
+            "dependsOn": [
+                "win-x86-staticlib-debug-compiler",
+            ],
+            "problemMatcher": ["$msCompile"],
+            "command": "lib.exe",
+            "args": [
+                "/MACHINE:X86",
+                "/OUT:${workspaceFolder}\\build\\fifo-win-x86-debug.lib",
+                "${workspaceFolder}\\build\\fifo-win.obj"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "win-x86-staticlib-rels-mklib",
+            "dependsOn": [
+                "win-x86-staticlib-rels-compiler",
+            ],
+            "problemMatcher": ["$msCompile"],
+            "command": "lib.exe",
+            "args": [
+                "/MACHINE:X86",
+                "/OUT:${workspaceFolder}\\build\\fifo-win-x86-rels.lib",
+                "${workspaceFolder}\\build\\fifo-win.obj"
+            ]
+        },
+        {
+            "label": "win-x86-staticlib-debug-build",
+            "dependsOn": [
+                "win-x86-staticlib-debug-mklib"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "win-x86-staticlib-rels-build",
+            "dependsOn": [
+                "win-x86-staticlib-rels-mklib"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "win-x64-staticlib-debug-compiler",
+            "problemMatcher": ["$msCompile"],
+            "command": "cl.exe",
+            "args": [
+                "/MTd", "/D", "_DEBUG",
+                "/Fo:", "${workspaceFolder}\\build\\fifo-win.obj",
+                "/c", "${workspaceFolder}\\src\\fifo-win.c"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "win-x64-staticlib-rels-compiler",
+            "problemMatcher": ["$msCompile"],
+            "command": "cl.exe",
+            "args": [
+                "/MT", "/D", "NDEBUG",
+                "/Fo:", "${workspaceFolder}\\build\\fifo-win.obj",
+                "/c", "${workspaceFolder}\\src\\fifo-win.c"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "win-x64-staticlib-debug-mklib",
+            "dependsOn": [
+                "win-x64-staticlib-debug-compiler",
+            ],
+            "problemMatcher": ["$msCompile"],
+            "command": "lib.exe",
+            "args": [
+                "/MACHINE:X64",
+                "/OUT:${workspaceFolder}\\build\\fifo-win-x64-debug.lib",
+                "${workspaceFolder}\\build\\fifo-win.obj"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "win-x64-staticlib-rels-mklib",
+            "dependsOn": [
+                "win-x64-staticlib-rels-compiler",
+            ],
+            "problemMatcher": ["$msCompile"],
+            "command": "lib.exe",
+            "args": [
+                "/MACHINE:X64",
+                "/OUT:${workspaceFolder}\\build\\fifo-win-x64-rels.lib",
+                "${workspaceFolder}\\build\\fifo-win.obj"
+            ]
+        },
+        {
+            "label": "win-x64-staticlib-debug-build",
+            "dependsOn": [
+                "win-x64-staticlib-debug-mklib"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "win-x64-staticlib-rels-build",
+            "dependsOn": [
+                "win-x64-staticlib-rels-mklib"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+} 
