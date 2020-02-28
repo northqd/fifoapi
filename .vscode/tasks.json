@@ -146,6 +146,102 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "type": "shell",
+            "label": "win-x64-examples-debug-objects",
+            "problemMatcher": ["$msCompile"],
+            "command": "cl.exe",
+            "args": [
+                "/Zi", "/MTd", "/D", "_DEBUG", "/EHsc",
+                "/c",
+                "${workspaceFolder}\\examples\\fifoclient.c",
+                "${workspaceFolder}\\examples\\fifoserver.c"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "win-x64-examples-rels-objects",
+            "problemMatcher": ["$msCompile"],
+            "command": "cl.exe",
+            "args": [
+                "/Zi", "/MT", "/D", "NDEBUG", "/EHsc",
+                "/c",
+                "${workspaceFolder}\\examples\\fifoclient.c",
+                "${workspaceFolder}\\examples\\fifoserver.c"
+            ]
+        },
+        {
+            "label": "win-x64-examples-rels-fifoclient",
+            "dependsOn": [
+                "win-x64-staticlib-rels-build",
+                "win-x64-examples-rels-objects"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "link.exe",
+            "args": [
+                "${workspaceFolder}\\build\\fifo-win-x64-rels.lib",
+                "${workspaceFolder}\\fifoclient.obj",
+                "/out:${workspaceFolder}\\build\\fifoclient.exe"
+            ]
+        },
+        {
+            "label": "win-x64-examples-rels-fifoserver",
+            "dependsOn": [
+                "win-x64-staticlib-rels-build",
+                "win-x64-examples-rels-objects"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "link.exe",
+            "args": [
+                "${workspaceFolder}\\build\\fifo-win-x64-rels.lib",
+                "${workspaceFolder}\\fifoserver.obj",
+                "/out:${workspaceFolder}\\build\\fifoserver.exe"
+            ]
+        },
+        {
+            "label": "win-x64-examples-debug-fifoclient",
+            "dependsOn": [
+                "win-x64-staticlib-debug-build",
+                "win-x64-examples-debug-objects"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "link.exe",
+            "args": [
+                "${workspaceFolder}\\build\\fifo-win-x64-debug.lib",
+                "${workspaceFolder}\\fifoclient.obj",
+                "/out:${workspaceFolder}\\build\\fifoclient.exe"
+            ]
+        },
+        {
+            "label": "win-x64-examples-debug-fifoserver",
+            "dependsOn": [
+                "win-x64-staticlib-debug-build",
+                "win-x64-examples-debug-objects"
+            ],
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "link.exe",
+            "args": [
+                "${workspaceFolder}\\build\\fifo-win-x64-debug.lib",
+                "${workspaceFolder}\\fifoserver.obj",
+                "/out:${workspaceFolder}\\build\\fifoserver.exe"
+            ]
         }
     ]
-} 
+}
