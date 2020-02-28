@@ -20,7 +20,7 @@
 #endif
 
 
-#define APPNAME        "logserver"
+#define APPNAME        "fifoserver"
 #define APPVER         "0.0.1"
 
 fifo_server server = 0;
