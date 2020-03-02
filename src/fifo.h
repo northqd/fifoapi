@@ -30,7 +30,7 @@
  * @author     Liang Zhang <350137278@qq.com>
  * @version    0.0.1
  * @create     2020-01-22 18:20:46
- * @update     2020-02-09 00:21:46
+ * @update     2020-03-02 00:21:46
  */
 #ifndef _FIFO_H_
 #define _FIFO_H_
