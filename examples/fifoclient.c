@@ -12,7 +12,6 @@
 
 #ifdef __WINDOWS__
     # include <Windows.h>
-
     # include "win32/getoptw.h"
 #else
     // Linux: see Makefile
