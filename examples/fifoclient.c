@@ -13,6 +13,7 @@
 #ifdef __WINDOWS__
     # include <Windows.h>
 
+    // not use
     # include "win32/getoptw.h"
 #else
     // Linux: see Makefile
