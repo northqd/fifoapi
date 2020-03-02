@@ -12,6 +12,7 @@
 
 #ifdef __WINDOWS__
     # include <Windows.h>
+    // getopt for Win32
     # include "win32/getoptw.h"
 #else
     // Linux: see Makefile
